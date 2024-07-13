@@ -1,0 +1,42 @@
+-- Column Constraints
+CREATE TABLE student (
+	id INTEGER PRIMARY KEY,
+	name TEXT,
+	grade INTEGER NOT NULL,
+	age INTEGER DEFAULT 10
+);
+
+-- CREATE TABLE Statement
+CREATE TABLE tbl_employee
+(
+	[FirstName] VARCHAR (32),
+	[LastName] VARCHAR (32),
+	[Age] INT
+)
+
+-- INSERT INTO Statement
+
+-- Inset into columns in order
+INSERT INTO [dbo].[tbl_employee]
+VALUES ('Kate', 'Smith', '31');
+
+-- Insert into columns by name
+INSERT INTO [dbo].[tbl_employee] (FirstName, LastName, Age)
+VALUES ('James', 'Brown', '48');
+
+-- ALTER Statement
+ALTER TABLE [dbo].[tbl_employee]
+ADD employee_id INT;
+
+-- DELETE Statement
+DELETE FROM [dbo].[tbl_employee]
+WHERE FirstName = 'James';
+
+
+-- UPDATE Statement
+UPDATE [dbo].[tbl_employee]
+SET employee_id = '1234'
+WHERE LastName = 'Smith';
+
+SELECT *
+FROM [dbo].[tbl_employee]
