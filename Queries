@@ -1,0 +1,65 @@
+-- SELECT Statement
+SELECT *
+FROM [dbo].[202301-divvy-tripdata]
+
+
+-- DISTINCT Operator
+SELECT DISTINCT start_station_name
+FROM [dbo].[202301-divvy-tripdata]
+
+
+-- NULL Values
+SELECT ride_id
+FROM [dbo].[202301-divvy-tripdata]
+WHERE start_station_id IS NOT NULL
+
+
+-- WHERE Clause
+SELECT ride_id
+FROM [dbo].[202301-divvy-tripdata]
+WHERE start_station_id IS NOT NULL
+
+
+-- AS Clause
+SELECT member_casual AS 'subscription_type'
+FROM [dbo].[202301-divvy-tripdata]
+
+
+-- ORDER BY Clause
+SELECT *
+FROM [dbo].[202301-divvy-tripdata]
+ORDER BY started_at DESC
+
+
+-- LIKE Operator
+-- % Wildcard
+SELECT COUNT (start_station_name), start_station_name, end_station_name
+FROM [dbo].[202301-divvy-tripdata]
+WHERE end_station_name LIKE 'Kingsbury St%'
+GROUP BY start_station_name, end_station_name
+ORDER BY 1 DESC
+
+-- _ Wildcard
+SELECT COUNT (start_station_ID), start_station_ID, start_station_NAME
+FROM [dbo].[202301-divvy-tripdata]
+WHERE start_station_id LIKE '_A130%'
+GROUP BY start_station_ID, start_station_NAME
+ORDER BY 2 DESC	
+
+
+-- AND Operator
+SELECT COUNT (end_station_name), end_station_name
+FROM [dbo].[202301-divvy-tripdata]
+WHERE rideable_type = 'electric_bike'
+	AND member_casual = 'member'
+GROUP BY end_station_name
+ORDER BY 1 DESC
+
+
+-- OR Operator
+SELECT COUNT (start_station_name), start_station_name
+FROM [dbo].[202301-divvy-tripdata]
+WHERE end_station_name = 'Clinton St & Washington Blvd'
+	OR end_station_name = 'Kingsbury St & Kinzie St'
+GROUP BY start_station_name
+ORDER BY 1 DESC
