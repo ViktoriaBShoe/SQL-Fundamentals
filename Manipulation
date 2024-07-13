@@ -32,11 +32,7 @@ ADD employee_id INT;
 DELETE FROM [dbo].[tbl_employee]
 WHERE FirstName = 'James';
 
-
 -- UPDATE Statement
 UPDATE [dbo].[tbl_employee]
 SET employee_id = '1234'
 WHERE LastName = 'Smith';
-
-SELECT *
-FROM [dbo].[tbl_employee]
