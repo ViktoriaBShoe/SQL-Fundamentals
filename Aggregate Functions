@@ -1,0 +1,58 @@
+-- Aggregate functions compute a single result from a set of values:
+-- COUNT()
+-- SUM()
+-- MAX()
+-- MIN()
+-- AVG()
+
+
+-- COUNT() Aggregate Function
+SELECT COUNT (*)
+FROM [dbo].[income]
+WHERE hours_per_week < 40
+
+
+-- SUM() Aggregate Function
+SELECT SUM(yearly_income)
+FROM [dbo].[income]
+
+
+-- MAX() Aggregate Function
+SELECT MAX(yearly_income)
+FROM [dbo].[income]
+
+
+-- MIN() Aggregate Function
+SELECT MIN(yearly_income)
+FROM [dbo].[income]
+
+
+-- AVG() Aggregate Function
+SELECT AVG(yearly_income)
+FROM [dbo].[income]
+WHERE hours_per_week > 40
+
+
+-- GROUP BY Clause
+SELECT education,
+	COUNT (*) as total_per_education_level
+FROM [dbo].[income]
+GROUP BY education
+
+
+-- ROUND() Function
+SELECT age,
+	ROUND (AVG(yearly_income), 2)
+FROM [dbo].[income]
+WHERE age > 40
+GROUP BY age
+ORDER BY 1
+
+
+-- HAVING Clause
+SELECT age,
+	COUNT (*)
+FROM [dbo].[income]
+GROUP BY age
+HAVING COUNT (*) > 40
+ORDER BY 1
