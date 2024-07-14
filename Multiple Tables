@@ -1,0 +1,36 @@
+-- (INNER) JOIN: Returns records that have matching values in both tables
+-- LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+-- RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+-- FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+SELECT Year_2021.Employee_ID, Year_2021.Last_Name, Year_2021.First_Name, Year_2021.DOB, Year_2021.Year, Year_2022.Year
+FROM [dbo].[Best_in_2021] AS Year_2021
+INNER JOIN [dbo].[Best_in_2022] as Year_2022
+	ON Year_2021.Employee_ID = Year_2022.Employee_ID
+
+
+-- WITH Clause - stores the result of a query in a temporary table (temporary_movies)
+-- using an alias.
+WITH temporaryTable (averageValue) AS (
+    SELECT AVG(yearly_income)
+    FROM [dbo].[income]
+)
+        SELECT id, yearly_income, race, gender 
+        FROM [dbo].[income], temporaryTable 
+        WHERE yearly_income > temporaryTable.averageValue;
+
+
+-- UNION Clause - is used to combine results that appear from multiple SELECT statements
+-- and filter duplicates.
+SELECT Last_Name
+FROM [dbo].[Best_in_2021]
+UNION
+SELECT Last_Name
+FROM [dbo].[Best_in_2022]
+
+-- CROSS JOIN Clause - combines each row from one table with every row from another, 
+-- creating all possible combinations of records from both tables.
+SELECT [dbo].[Best_in_2021].Last_Name,
+	[dbo].[Best_in_2022].Last_Name
+FROM [dbo].[Best_in_2021]
+CROSS JOIN [dbo].[Best_in_2022]
