@@ -29,7 +29,6 @@ WHERE row_num > 1
 
 DELETE FROM bakery.customer_sweepstakes1
 WHERE sweepstake_id IN (
-
 	SELECT sweepstake_id
 	FROM (
 		SELECT sweepstake_id,
